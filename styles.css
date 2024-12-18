@@ -122,3 +122,13 @@ section.section-container button.score-selector {
   font-weight: 700;
   gap: .5rem;
 }
+
+/* Footer Styles */
+.attribution { 
+  font-size: 11px;
+  text-align: center; 
+}
+
+.attribution a { 
+  color: hsl(228, 45%, 44%); 
+}
