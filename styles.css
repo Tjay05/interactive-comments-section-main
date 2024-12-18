@@ -9,6 +9,23 @@
 - Desktop Styles 
 */
 
+/* Varaiables */
+:root {
+  /* Colors */
+  /* Prmiary */
+  --moderate-blue: hsl(238, 40%, 52%);
+  --soft-red: hsl(358, 79%, 66%);
+  --light-grayish-blue: hsl(239, 57%, 85%);
+  --pale-red: hsl(357, 100%, 86%);
+
+  /* Neutral */
+  --dark-blue: hsl(212, 24%, 26%);
+  --grayish-blue: hsl(211, 10%, 45%);
+  --light-gray: hsl(223, 19%, 93%);
+  --very-light-gray: hsl(228, 33%, 97%);
+  --white: hsl(0, 0%, 100%);
+}
+
 /* Reset Styles */
 *,
 *::before,
@@ -22,15 +39,86 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 address {
-    font-style: normal;
+  font-style: normal;
 }
 
 /* Base styles */
 body {
-    background-color: var(--gray-blue);
-    font-family: 'Manrope', sans-serif;
+  background-color: var(--light-gray);
+  font-family: 'Rubik', serif;
+  font-size: 16px;
+}
+
+/* Desktop Styles */
+/* Main Styles */
+main {
+  width: 90%;
+  margin-inline: auto;
+  margin-block: 2rem;
+}
+
+/* Section Styles */
+section.section-container {
+  background-color: var(--white);
+  border-radius: 10px;
+  margin-block: 1rem;
+  padding: 1rem;
+}
+
+.section-container .top-div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+ .top-div img.avatar {
+  width: 13%;
+}
+
+.top-div p.username {
+  font-weight: 700;
+  color: var(--dark-blue);
+}
+
+.top-div p.duration {
+  font-weight: 400;
+  color: var(--grayish-blue);
+}
+
+section.section-container p.comment-text {
+  margin-block: 1rem;
+  color: var(--grayish-blue);
+  font-weight: 400;
+}
+
+section.section-container .bottom-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section.section-container button.score-selector {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  border: none;
+  border-radius: 10px;
+  padding: .7rem .9rem;
+  color: var(--moderate-blue);
+  font-weight: 500;
+  background-color: var(--light-gray);
+  font-family: 'Rubik', serif;
+  font-size: 1rem;
+}
+
+.reply-btn {
+  display: flex;
+  align-items: center;
+  color: var(--moderate-blue);
+  font-weight: 700;
+  gap: .5rem;
 }
