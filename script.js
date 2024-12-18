@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(data => {
       const container = document.getElementById('container');
       data.comments.map(item => {
-        // Each Comment wrapper
+        // Constant Declarations
         const section = document.createElement('section');
         const headerDiv = document.createElement('div');
         const img = document.createElement('img');
@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const button = document.createElement('button'); 
         const replyDiv = document.createElement('div');
         const reply = document.createElement('p'); 
+        const repliesSection = document.createElement('section');
 
         // Class name declaration
         section.className = 'section-container';
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         footerDiv.className = 'bottom-div';
         button.className = 'score-selector'
         replyDiv.className = 'reply-btn'
+        repliesSection.className = 'reply-section';
 
         // Image
         img.src = item.user.image.png;
@@ -72,6 +74,45 @@ document.addEventListener('DOMContentLoaded', function() {
         section.appendChild(content);
         section.appendChild(footerDiv);
         container.appendChild(section);
+
+        item.replies.map(replies => {
+          // Image
+          img.src = replies.user.image.png;
+          img.alt = replies.user.username;
+          // SVG
+          plusIcon.src = 'images/icon-plus.svg';
+          minusIcon.src = 'images/icon-minus.svg';
+          replyIcon.src = 'images/icon-reply.svg';
+          // Username
+          username.innerHTML = replies.user.username;
+          // Created
+          created.innerHTML = replies.createdAt;
+          // Content of comment
+          content.innerHTML = replies.content;
+          // Score
+          score.innerHTML = replies.score
+          reply.innerHTML = 'Reply'
+
+          // Rendering container
+          // Top div
+          headerDiv.appendChild(img);
+          headerDiv.appendChild(username);
+          headerDiv.appendChild(created);
+
+          // Bottom div
+          button.appendChild(plusIcon);
+          button.appendChild(score);
+          button.appendChild(minusIcon);
+          replyDiv.appendChild(replyIcon);
+          replyDiv.appendChild(reply);
+          footerDiv.appendChild(button);
+          footerDiv.appendChild(replyDiv);
+
+          repliesSection.appendChild(headerDiv);
+          repliesSection.appendChild(content);
+          repliesSection.appendChild(footerDiv);
+          container.appendChild(repliesSection);
+        })
       })
     })
     .catch(error => {
