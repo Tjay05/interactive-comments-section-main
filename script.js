@@ -26,7 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const reply = document.createElement('p'); 
 
         // Class name declaration
+        section.className = 'section-container';
         headerDiv.className = 'top-div';
+        img.className = 'avatar';
+        username.className = 'username';
+        created.className = 'duration';
+        content.className = 'comment-text';
         footerDiv.className = 'bottom-div';
         button.className = 'score-selector'
         replyDiv.className = 'reply-btn'
