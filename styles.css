@@ -62,14 +62,14 @@ main {
 }
 
 /* Section Styles */
-section.section-container {
+section {
   background-color: var(--white);
   border-radius: 10px;
   margin-block: 1rem;
   padding: 1rem;
 }
 
-.section-container .top-div {
+section .top-div {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -89,19 +89,19 @@ section.section-container {
   color: var(--grayish-blue);
 }
 
-section.section-container p.comment-text {
+section p.comment-text {
   margin-block: 1rem;
   color: var(--grayish-blue);
   font-weight: 400;
 }
 
-section.section-container .bottom-div {
+section .bottom-div {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-section.section-container button.score-selector {
+section button.score-selector {
   display: flex;
   align-items: center;
   gap: .7rem;
@@ -121,6 +121,13 @@ section.section-container button.score-selector {
   color: var(--moderate-blue);
   font-weight: 700;
   gap: .5rem;
+}
+
+/* Replies Section */
+.replies-container {
+  width: 100%;
+  border-left: 1px solid var(--grayish-blue);
+  padding-left: 5%;
 }
 
 /* Footer Styles */
