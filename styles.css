@@ -51,6 +51,7 @@ body {
   background-color: var(--light-gray);
   font-family: 'Rubik', serif;
   font-size: 16px;
+  padding-block-end: 1rem;
 }
 
 /* Desktop Styles */
