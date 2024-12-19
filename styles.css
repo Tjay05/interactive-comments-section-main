@@ -131,6 +131,11 @@ section button.score-selector {
   padding-left: 5%;
 }
 
+/* Current User */
+#current-user-img, #send-btn {
+  /* display: none; */
+}
+
 /* Footer Styles */
 .attribution { 
   font-size: 11px;
@@ -139,4 +144,11 @@ section button.score-selector {
 
 .attribution a { 
   color: hsl(228, 45%, 44%); 
+}
+
+/* DEsktop Styles */
+@media(min-width: 768px) {
+  #current-user-img, #send-btn {
+    display: inline-block;
+  }
 }

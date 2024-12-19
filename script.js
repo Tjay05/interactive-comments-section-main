@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
           container.appendChild(repliesContainer);
         }
       });
-      
+
       // USER FUNCTION
       const currentUser = data.currentUser;
       const currentUserContainer = document.createElement('section');
@@ -40,10 +40,17 @@ document.addEventListener('DOMContentLoaded', function() {
       const sendBtn = document.createElement('button');
       sendBtn.id = 'send-btn';
       sendBtn.innerText = 'Send';
+      
+      const userBtmDiv = document.createElement('div');
+      userBtmDiv.className = 'user-btm-div';
+      userBtmDiv.appendChild(currentUserImg);
+      userBtmDiv.appendChild(sendBtn);
 
       currentUserContainer.appendChild(currentUserImg);
       currentUserContainer.appendChild(textarea);
       currentUserContainer.appendChild(sendBtn);
+      currentUserContainer.appendChild(userBtmDiv);
+
 
       container.appendChild(currentUserContainer);
 
