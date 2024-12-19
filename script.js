@@ -43,15 +43,35 @@ document.addEventListener('DOMContentLoaded', function() {
       
       const userBtmDiv = document.createElement('div');
       userBtmDiv.className = 'user-btm-div';
-      userBtmDiv.appendChild(currentUserImg);
-      userBtmDiv.appendChild(sendBtn);
-
+      userBtmDiv.appendChild(currentUserImg.cloneNode(true));
+      userBtmDiv.appendChild(sendBtn.cloneNode(true));
+      
       currentUserContainer.appendChild(currentUserImg);
       currentUserContainer.appendChild(textarea);
       currentUserContainer.appendChild(sendBtn);
-      currentUserContainer.appendChild(userBtmDiv);
+      
+      function handleScreenChange(e) {
+        if(e.matches) {
+          if (!currentUserContainer.contains(userBtmDiv)) {
+            currentUserContainer.removeChild(currentUserImg);
+            currentUserContainer.removeChild(sendBtn);
+            currentUserContainer.appendChild(userBtmDiv);
+        }
+        } else {
+          if (currentUserContainer.contains(userBtmDiv)) {
+            currentUserContainer.removeChild(userBtmDiv);
+            currentUserContainer.appendChild(currentUserImg);
+            currentUserContainer.appendChild(textarea);
+            currentUserContainer.appendChild(sendBtn);
+          }
+        }
+      }
 
+      const mediaQuery = window.matchMedia('(max-width: 759px)');
+      mediaQuery.addEventListener('change', handleScreenChange);
 
+      handleScreenChange(mediaQuery);
+      
       container.appendChild(currentUserContainer);
 
       // Comment Button
