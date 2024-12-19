@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .then(data => {
       const container = document.getElementById('container');
+      // COMMENTS FUNCTION
       data.comments.map(item => {
         renderComment(item, container);
         if (item.replies.length > 0) {
@@ -19,6 +20,38 @@ document.addEventListener('DOMContentLoaded', function() {
           });
 
           container.appendChild(repliesContainer);
+        }
+      });
+      
+      // USER FUNCTION
+      const currentUser = data.currentUser;
+      const currentUserContainer = document.createElement('section');
+      currentUserContainer.className = 'current-user-section';
+
+      const currentUserImg = document.createElement('img');
+      currentUserImg.id = 'current-user-img';
+      currentUserImg.src = currentUser.image.png;
+      currentUserImg.alt = currentUser.username;
+
+      const textarea = document.createElement('textarea');
+      textarea.id = 'new-comment';
+      textarea.placeholder = 'Add a comment...';
+
+      const sendBtn = document.createElement('button');
+      sendBtn.id = 'send-btn';
+      sendBtn.innerText = 'Send';
+
+      currentUserContainer.appendChild(currentUserImg);
+      currentUserContainer.appendChild(textarea);
+      currentUserContainer.appendChild(sendBtn);
+
+      container.appendChild(currentUserContainer);
+
+      // Comment Button
+      sendBtn.addEventListener('click', () => {
+        const newComment = document.getElementById('new-comment').value;
+        if (newComment.trim() !== '') {
+          // addNewComment(newComment, currentUser);
         }
       });
     })
