@@ -151,6 +151,28 @@ section button.score-selector {
   gap: .5rem;
 }
 
+.format-tools-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.edit-btn {
+  display: flex;
+  align-items: center;
+  color: var(--moderate-blue);
+  font-weight: 700;
+  gap: .4rem;
+}
+
+.delete-btn {
+  display: flex;
+  align-items: center;
+  color: var(--soft-red);
+  font-weight: 500;
+  gap: .4rem;
+}
+
 /* Replies Section */
 .replies-container {
   width: 100%;

@@ -8,15 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .then(data => {
       const container = document.getElementById('container');
+      const currentUser = data.currentUser;
       // COMMENTS FUNCTION
       data.comments.map(item => {
-        renderComment(item, container);
+        renderComment(item, container, currentUser);
         if (item.replies.length > 0) {
           const repliesContainer = document.createElement('div');
           repliesContainer.className = 'replies-container';
 
           item.replies.map(reply => {
-            renderComment(reply, repliesContainer, true);
+            renderComment(reply, repliesContainer, currentUser, true);
           });
 
           container.appendChild(repliesContainer);
@@ -24,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       // USER FUNCTION
-      const currentUser = data.currentUser;
       const currentUserContainer = document.createElement('section');
       currentUserContainer.className = 'current-user-section';
 
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentUserContainer.removeChild(currentUserImg);
             currentUserContainer.removeChild(sendBtn);
             currentUserContainer.appendChild(userBtmDiv);
-        }
+          }
         } else {
           if (currentUserContainer.contains(userBtmDiv)) {
             currentUserContainer.removeChild(userBtmDiv);
@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
       const mediaQuery = window.matchMedia('(max-width: 759px)');
       mediaQuery.addEventListener('change', handleScreenChange);
-
       handleScreenChange(mediaQuery);
       
       container.appendChild(currentUserContainer);
@@ -87,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 });
 
-function renderComment(item, container, isReply = false) {
+function renderComment(item, container, currentUser, isReply = false) {
   // Constant Declarations
   const section = document.createElement('section');
   const headerDiv = document.createElement('div');
@@ -99,10 +98,17 @@ function renderComment(item, container, isReply = false) {
   const plusIcon = document.createElement('img');
   const minusIcon = document.createElement('img');
   const replyIcon = document.createElement('img');
+  const deleteIcon = document.createElement('img');
+  const editIcon = document.createElement('img');
   const score = document.createElement('p'); 
   const button = document.createElement('button'); 
   const replyDiv = document.createElement('div');
   const reply = document.createElement('p'); 
+  const formatToolsDiv = document.createElement('div');
+  const editDiv = document.createElement('div');
+  const editTxt = document.createElement('p'); 
+  const deleteDiv = document.createElement('div');
+  const deleteTxt = document.createElement('p'); 
 
   // Class name declaration
   section.className = isReply ? 'reply-section' : 'section-container';
@@ -113,15 +119,21 @@ function renderComment(item, container, isReply = false) {
   content.className = 'comment-text';
   footerDiv.className = 'bottom-div';
   button.className = 'score-selector'
-  replyDiv.className = 'reply-btn'
+  replyDiv.className = 'reply-btn';
+  formatToolsDiv.className = 'format-tools-container';
+  editDiv.className = 'edit-btn';
+  deleteDiv.className = 'delete-btn';
 
   // Image
   img.src = item.user.image.png;
   img.alt = item.user.username;
+
   // SVG
   plusIcon.src = 'images/icon-plus.svg';
   minusIcon.src = 'images/icon-minus.svg';
   replyIcon.src = 'images/icon-reply.svg';
+  deleteIcon.src = 'images/icon-delete.svg';
+  editIcon.src = 'images/icon-edit.svg';
   // Username
   username.innerHTML = item.user.username;
   // Created
@@ -130,7 +142,9 @@ function renderComment(item, container, isReply = false) {
   content.innerHTML = item.content;
   // Score
   score.innerHTML = item.score
-  reply.innerHTML = 'Reply'
+  reply.innerHTML = 'Reply';
+  editTxt.innerHTML = 'Edit';
+  deleteTxt.innerHTML = 'Delete';
 
   // Rendering container
   // Top div
@@ -144,8 +158,19 @@ function renderComment(item, container, isReply = false) {
   button.appendChild(minusIcon);
   replyDiv.appendChild(replyIcon);
   replyDiv.appendChild(reply);
+  deleteDiv.appendChild(deleteIcon);
+  deleteDiv.appendChild(deleteTxt);
+  editDiv.appendChild(editIcon);
+  editDiv.appendChild(editTxt);
+  formatToolsDiv.appendChild(deleteDiv);
+  formatToolsDiv.appendChild(editDiv);
   footerDiv.appendChild(button);
   footerDiv.appendChild(replyDiv);
+
+  if (currentUser.username === item.user.username) {
+    footerDiv.removeChild(replyDiv);
+    footerDiv.appendChild(formatToolsDiv);
+  }
 
   section.appendChild(headerDiv);
   section.appendChild(content);
