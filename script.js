@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
       data = fetchedData;
       const container = document.getElementById('container');
       const currentUser = data.currentUser;
+
       // COMMENTS FUNCTION
       data.comments.map(item => {
         renderComment(item, container, currentUser);
@@ -77,14 +78,18 @@ document.addEventListener('DOMContentLoaded', function() {
       container.appendChild(currentUserContainer);
 
       // Comment Button
-      sendBtn.addEventListener('click', () => {
-        // console.log('click');
-        const newComment = textarea.value;
-        if (newComment.trim() !== '') {
-          console.log(textarea.value);
-          addComment(newComment, currentUser);
-        }
-      });
+      function addSendButtonListener(btn) {
+        btn.addEventListener('click', () => {
+          const newComment = textarea.value;
+          if (newComment.trim() !== '') {
+            addComment(newComment, currentUser);
+            textarea.value = '';
+          }
+        });
+      }
+
+      addSendButtonListener(sendBtn);
+      addSendButtonListener(userBtmDiv.querySelector('button'))
     })
     .catch(error => {
       console.error('There was a probelm with the fecth,', error);
@@ -181,14 +186,14 @@ function renderComment(item, container, currentUser, isReply = false) {
   section.appendChild(content);
   section.appendChild(footerDiv);
 
-  container.appendChild(section);
+  container.insertBefore(section, document.querySelector('.current-user-section'));
 }
 
 function addComment(content, currentUser) {
   const newComment = {
     id: Date.now(),
     content,
-    createdAt: Date.now(),
+    createdAt: new Date().toLocaleTimeString(),
     score: 0,
     user: {
       image: currentUser.image,
