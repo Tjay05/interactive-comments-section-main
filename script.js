@@ -1,3 +1,5 @@
+let data = null;
+
 document.addEventListener('DOMContentLoaded', function() {
   fetch('data.json')
     .then(res => {
@@ -6,7 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
       } 
       return res.json();
     })
-    .then(data => {
+    .then(fetchedData => {
+      data = fetchedData;
       const container = document.getElementById('container');
       const currentUser = data.currentUser;
       // COMMENTS FUNCTION
@@ -75,9 +78,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Comment Button
       sendBtn.addEventListener('click', () => {
-        const newComment = document.getElementById('new-comment').value;
+        // console.log('click');
+        const newComment = textarea.value;
         if (newComment.trim() !== '') {
-          // addNewComment(newComment, currentUser);
+          console.log(textarea.value);
+          addComment(newComment, currentUser);
         }
       });
     })
@@ -177,4 +182,21 @@ function renderComment(item, container, currentUser, isReply = false) {
   section.appendChild(footerDiv);
 
   container.appendChild(section);
+}
+
+function addComment(content, currentUser) {
+  const newComment = {
+    id: Date.now(),
+    content,
+    createdAt: Date.now(),
+    score: 0,
+    user: {
+      image: currentUser.image,
+      username: currentUser.username
+    },
+    replies: []
+  };
+
+  data.comments.push(newComment);
+  renderComment(newComment, document.getElementById('container'), currentUser);
 }
