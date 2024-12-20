@@ -180,6 +180,8 @@ function renderComment(item, container, currentUser, isReply = false) {
   if (currentUser.username === item.user.username) {
     footerDiv.removeChild(replyDiv);
     footerDiv.appendChild(formatToolsDiv);
+
+    editDiv.addEventListener('click', () => editComment(section, item, currentUser));
   }
 
   section.appendChild(headerDiv);
@@ -187,6 +189,31 @@ function renderComment(item, container, currentUser, isReply = false) {
   section.appendChild(footerDiv);
 
   container.insertBefore(section, document.querySelector('.current-user-section'));
+}
+
+function editComment (section, item, currentUser) {
+  const contentElement = section.querySelector('.comment-text');
+  const ogContent = contentElement.innerText;
+  const textarea = document.createElement('textarea');
+  textarea.className = 'edit-textarea';
+  textarea.value = ogContent;
+
+  const updateBtn = document.createElement('button');
+  updateBtn.innerText = 'Update';
+  updateBtn.className = 'update-btn';
+
+  updateBtn.addEventListener('click', () => {
+    item.content = textarea.value;
+    contentElement.innerText = textarea.value;
+    contentElement.style.display = 'block';
+    section.removeChild(textarea);
+    section.removeChild(updateBtn);
+  });
+
+  contentElement.style.display = 'none';
+  section.insertBefore(textarea, contentElement);
+  section.insertBefore(updateBtn, contentElement);
+  // section.appendChild(updateBtn);
 }
 
 function addComment(content, currentUser) {
