@@ -215,6 +215,32 @@ section.current-user-section button#send-btn {
   background-color: var(--moderate-blue);
 }
 
+/* Edit Styles */
+section textarea.edit-textarea {
+  width: 100%;
+  max-height: 100px;
+  font-size: .8rem;
+  font-family: inherit;
+  font-weight: 400;
+  color: var(--grayish-blue);
+  border-color: var(--grayish-blue);
+  padding: .7rem 1rem;
+  border-radius: 10px;
+  margin-block: 1rem;
+}
+
+section button.update-btn {
+  border: none;
+  padding: .8rem 1.3rem;
+  font-weight: 500;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: var(--white);
+  border-radius: 10px;
+  background-color: var(--moderate-blue);
+  margin-block-end: 1rem;
+}
+
 /* Footer Styles */
 .attribution { 
   font-size: 11px;
