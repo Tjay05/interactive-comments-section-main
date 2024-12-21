@@ -146,7 +146,7 @@ function renderComment(item, container, currentUser, isReply = false) {
   editIcon.src = 'images/icon-edit.svg';
   // Username
   username.innerHTML = item.user.username;
-  // Created
+  // CreatedAt
   created.innerHTML = item.createdAt;
   // Content of comment
   content.innerHTML = item.content;
