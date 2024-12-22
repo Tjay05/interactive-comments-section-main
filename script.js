@@ -144,6 +144,7 @@ function renderComment(item, container, currentUser, isReply = false) {
   replyIcon.src = 'images/icon-reply.svg';
   deleteIcon.src = 'images/icon-delete.svg';
   editIcon.src = 'images/icon-edit.svg';
+  
   // Username
   username.innerHTML = item.user.username;
   // CreatedAt
