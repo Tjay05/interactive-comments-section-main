@@ -35,8 +35,6 @@ Users should be able to:
 
 ![](./screenshot.jpg)
 
-
-
 Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
 
 
