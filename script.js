@@ -233,3 +233,7 @@ function addComment(content, currentUser) {
   data.comments.push(newComment);
   renderComment(newComment, document.getElementById('container'), currentUser);
 }
+
+function deleteComment() {
+  
+}
