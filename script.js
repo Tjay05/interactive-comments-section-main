@@ -192,6 +192,7 @@ function renderComment(item, container, currentUser, isReply = false) {
   container.insertBefore(section, document.querySelector('.current-user-section'));
 }
 
+// Edit Function
 function editComment (section, item, currentUser) {
   const contentElement = section.querySelector('.comment-text');
   const ogContent = contentElement.innerText;
