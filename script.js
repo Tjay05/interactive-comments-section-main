@@ -218,6 +218,7 @@ function editComment (section, item, currentUser) {
   // section.appendChild(updateBtn);
 }
 
+// New-Comment Function
 function addComment(content, currentUser) {
   const newComment = {
     id: Date.now(),
