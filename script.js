@@ -236,6 +236,7 @@ function addComment(content, currentUser) {
   renderComment(newComment, document.getElementById('container'), currentUser);
 }
 
+// Delete Function
 function deleteComment() {
   
 }
