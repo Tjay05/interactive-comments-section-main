@@ -238,5 +238,5 @@ function addComment(content, currentUser) {
 
 // Delete Function
 function deleteComment() {
-  const deleteComment
+  const deleteComment = 
 }
