@@ -215,7 +215,7 @@ section.current-user-section button#send-btn {
   background-color: var(--moderate-blue);
 }
 
-/* Edit Styles */
+/* Edit-Styles */
 section textarea.edit-textarea {
   width: 100%;
   max-height: 100px;
