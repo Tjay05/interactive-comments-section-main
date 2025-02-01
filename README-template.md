@@ -97,7 +97,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
+- Website - [TJAY](https://www.your-site.com)
 - Frontend Mentor - [@Tjay05](https://www.frontendmentor.io/profile/tjay)
 - Twitter - [@tjay_yy](https://www.twitter.com/tjayy0)
 
