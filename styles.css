@@ -253,6 +253,11 @@ section button.update-btn {
 
 /* Desktop Styles */
 @media(min-width: 768px) {
+  main {
+    max-width: 720px;
+    margin-block: 4rem;
+  }
+
   /* Current User */
   section.current-user-section textarea#new-comment {
     width: 50%;
