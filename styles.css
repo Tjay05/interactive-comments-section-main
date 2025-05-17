@@ -260,8 +260,12 @@ section button.update-btn {
 
   /* Current User */
   section.current-user-section textarea#new-comment {
-    width: 50%;
+    width: 78%;
     height: 100px;
+  }
+
+  section.current-user-section img#current-user-img {
+    width: 6%;
   }
 
   section.current-user-section{
